@@ -1,0 +1,73 @@
+{
+  "tags": [
+    { "id": "all", "label": "全部" },
+    { "id": "camera", "label": "实拍" },
+    { "id": "virtual", "label": "虚拟拍摄" }
+  ],
+  "images": [
+    {
+      "id": "cam_001",
+      "title": "春熙路的一天",
+      "tag": "camera",
+      "src": "assets/images/sample_camera_01.jpg",
+      "date": "2025-10-12",
+      "caption": "街头光影，轻微颗粒感"
+    },
+    {
+      "id": "cam_002",
+      "title": "西岭雪山",
+      "tag": "camera",
+      "src": "assets/images/sample_camera_02.png",
+      "date": "2025-09-03",
+      "caption": "光与雪山"
+    },
+    {
+      "id": "cam_003",
+      "title": "黄龙五彩池",
+      "tag": "camera",
+      "src": "assets/images/PWR_4991.jpg",
+      "date": "2025-09-03",
+      "caption": "如此缤纷，如此美丽"
+    },
+    {
+      "id": "cam_004",
+      "title": "九寨沟冰瀑布",
+      "tag": "camera",
+      "src": "assets/images/PWR_7834.jpg",
+      "date": "2025-09-03",
+      "caption": "时间仿佛在那一瞬间停止"
+    },
+    {
+      "id": "vrc_002",
+      "title": "Karin",
+      "tag": "virtual",
+      "src": "assets/images/sample_virtual_02.png",
+      "date": "2025-08-19",
+      "caption": "rua笨蛋狐狐！"
+    },
+    {
+      "id": "vrc_003",
+      "title": "kibo",
+      "tag": "virtual",
+      "src": "assets/images/0025.png",
+      "date": "2025-08-19",
+      "caption": "有笨蛋"
+    },
+    {
+      "id": "vrc_005",
+      "title": "wuyi",
+      "tag": "virtual",
+      "src": "assets/images/wuyi C1.png",
+      "date": "2025-08-19",
+      "caption": "是wuyi"
+    },
+    {
+      "id": "vrc_004",
+      "title": "mlify",
+      "tag": "virtual",
+      "src": "assets/images/MLF.png",
+      "date": "2025-08-19",
+      "caption": "新模型Mlify!"
+    }
+  ]
+}

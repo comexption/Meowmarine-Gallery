@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh-CN" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meowmarine Gallery</title>
+    <meta name="description" content="Meowmarine Gallery — minimal frosted glass photo gallery for camera & virtual shots." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23111827' d='M32 8c10.5 0 20 7.8 20 18 0 7.4-4.2 12.8-10.6 16.2-1.7 1-3.4 2.5-4.5 4.8-.6 1.2-1.7 2-2.9 2H30c-1.2 0-2.3-.8-2.9-2-1.1-2.3-2.8-3.8-4.5-4.8C16.2 38.8 12 33.4 12 26 12 15.8 21.5 8 32 8Z'/%3E%3Ccircle cx='24' cy='26' r='3' fill='%23ffffff'/%3E%3Ccircle cx='40' cy='26' r='3' fill='%23ffffff'/%3E%3Cpath d='M26 34c2.5 2.2 9.5 2.2 12 0' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' fill='none'/%3E%3C/svg%3E" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/main.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+  </head>
+  <body class="h-full">
+    <div id="app" class="min-h-full">
+      <div class="bg-aurora">
+        <header class="topbar">
+          <div class="container mx-auto px-4 sm:px-6">
+            <div class="topbar_inner">
+              <div class="brand">
+                <div class="brand_icon glass">
+                  <i data-lucide="cat"></i>
+                </div>
+                <div class="brand_text">
+                  <div class="brand_title">Meowmarine Gallery</div>
+                  <div class="brand_meta">
+                    <span id="tag_count" class="pill">0 标签</span>
+                    <span id="image_count" class="pill">0 图片</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="topbar_actions">
+                <div class="search_wrap glass">
+                  <i data-lucide="search" class="search_icon"></i>
+                  <input id="search_input" class="search_input" placeholder="搜索标题/注释…" autocomplete="off" />
+                </div>
+
+                <button id="theme_toggle" class="icon_button glass" aria-label="切换主题">
+                  <i data-lucide="moon"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <main class="container mx-auto px-4 sm:px-6 pb-24">
+          <div id="tabs_row" class="tabs_row"></div>
+
+          <section class="grid_wrap">
+            <div id="grid" class="gallery_grid"></div>
+            <div id="empty_state" class="empty_state hidden">
+              <div class="empty_card glass">
+                <div class="empty_title">没有匹配的图片</div>
+                <div class="empty_desc">尝试切换标签或清空搜索条件。</div>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <div id="island" class="island glass">
+          <button id="island_search_btn" class="island_btn" aria-label="搜索">
+            <i data-lucide="search"></i>
+          </button>
+
+          <div id="island_tabs" class="island_tabs"></div>
+
+          <button id="island_theme_btn" class="island_btn" aria-label="切换主题">
+            <i data-lucide="sun"></i>
+          </button>
+        </div>
+
+        <footer class="footer">
+          <div class="container mx-auto px-4 sm:px-6">
+            <div class="footer_inner glass">
+              <div class="footer_left">
+                <span class="footer_brand">Meowmarine Inc.</span>
+              </div>
+              <div class="footer_right">
+                <span id="footer_stats" class="footer_stats">—</span>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+
+      <div id="viewer" class="viewer hidden" aria-hidden="true">
+        <div class="viewer_backdrop"></div>
+        <div class="viewer_shell glass">
+          <div class="viewer_top">
+            <div class="viewer_title_wrap">
+              <div id="viewer_title" class="viewer_title">—</div>
+              <div id="viewer_subtitle" class="viewer_subtitle">—</div>
+            </div>
+
+            <div class="viewer_controls">
+              <button id="viewer_prev" class="icon_button glass" aria-label="上一张">
+                <i data-lucide="chevron-left"></i>
+              </button>
+              <button id="viewer_next" class="icon_button glass" aria-label="下一张">
+                <i data-lucide="chevron-right"></i>
+              </button>
+              <button id="viewer_close" class="icon_button glass" aria-label="关闭">
+                <i data-lucide="x"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="viewer_body">
+            <div class="viewer_media">
+              <img id="viewer_img" alt="" />
+            </div>
+
+            <div class="viewer_side">
+              <div class="viewer_section">
+                <div class="viewer_label">注释（可编辑，自动保存到本地）</div>
+                <textarea id="viewer_caption" class="viewer_textarea" placeholder="写点什么…"></textarea>
+              </div>
+
+              <div class="viewer_section">
+                <div class="viewer_label">信息</div>
+                <div id="viewer_info" class="viewer_info"></div>
+              </div>
+
+              <div class="viewer_section">
+                <div class="viewer_hint">
+                  快捷键：←/→ 切换，Esc 关闭
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="mobile_search_modal" class="mobile_search hidden" aria-hidden="true">
+        <div class="mobile_search_backdrop"></div>
+        <div class="mobile_search_card glass">
+          <div class="mobile_search_top">
+            <div class="mobile_search_title">搜索</div>
+            <button id="mobile_search_close" class="icon_button glass" aria-label="关闭搜索">
+              <i data-lucide="x"></i>
+            </button>
+          </div>
+          <div class="mobile_search_input_wrap glass">
+            <i data-lucide="search"></i>
+            <input id="mobile_search_input" class="mobile_search_input" placeholder="搜索标题/注释…" autocomplete="off" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>
