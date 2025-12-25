@@ -2,7 +2,8 @@
   "tags": [
     { "id": "all", "label": "全部" },
     { "id": "camera", "label": "实拍" },
-    { "id": "virtual", "label": "虚拟拍摄" }
+    { "id": "virtual", "label": "VRC" },
+    { "id": "other", "label": "其他" }
   ],
   "images": [
     {
@@ -68,6 +69,30 @@
       "src": "assets/images/MLF.png",
       "date": "2025-08-19",
       "caption": "新模型Mlify!"
+    },
+    {
+      "id": "other_001",
+      "title": "鱼鱼小屋的新年海报",
+      "tag": "other",
+      "src": "assets/images/GROUP NY2026 AIC.png",
+      "date": "2025-07-15",
+      "caption": "AI真是太好用啦"
+    },
+    {
+      "id": "other_002",
+      "title": "Meowmarine2026新年海报",
+      "tag": "other",
+      "src": "assets/images/2026 NEW YEAR DCP AIC.png",
+      "date": "2025-07-15",
+      "caption": "2026新年快乐！"
+    },
+    {
+      "id": "other_003",
+      "title": "鱼鱼小屋的群聊公告",
+      "tag": "other",
+      "src": "assets/images/Group ACM.png",
+      "date": "2025-07-15",
+      "caption": "这就是群聊公告里的图片"
     }
   ]
 }
