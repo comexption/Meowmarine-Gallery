@@ -55,7 +55,7 @@ body {
 }
 
 .topbar {
-  position: sticky;
+  position: relative;
   top: 0;
   z-index: 30;
   padding: 18px 0 14px;
@@ -601,6 +601,54 @@ html[data-theme="light"] .viewer_section {
 
 .hidden {
   display: none !important;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 1rem;
+  right: 2rem;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 50%;       /* 圆形按钮 */
+  cursor: pointer;
+
+  /* 更透明的毛玻璃效果 */
+  background: rgba(255, 255, 255, 0.15); /* 更低透明度 */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  /* 高光边框 */
+  border: 1px solid rgba(255, 255, 255, 0.6); /* 半透明白色边框 */
+
+  /* 阴影增加层次感 */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+
+  display: none;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.back-to-top.show {
+  display: flex;
+  opacity: 1;
+}
+
+.back-to-top:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 640px) {
+  .back-to-top {
+    bottom: 6rem;   /* 提高位置，避免和底部悬浮岛重叠 */
+    right: 0.7rem;    /* 靠右边一点 */
+    width: 3rem;  /* 缩小尺寸 */
+    height: 3rem;
+    font-size: 1rem; /* 箭头也缩小 */
+  }
 }
 
 @media (max-width: 1024px) {
