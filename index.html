@@ -20,9 +20,13 @@
           <div class="container mx-auto px-4 sm:px-6">
             <div class="topbar_inner">
               <div class="brand">
-                <div class="brand_icon glass">
-                  <i data-lucide="cat"></i>
-                </div>
+                <div class="brand_icon glass overflow-hidden rounded-half">
+                 <img
+                   src="data\GROUP NY2026.png"
+                   alt="logo"
+                   class="w-full h-full object-cover"
+                 />
+               </div>
                 <div class="brand_text">
                   <div class="brand_title">Meowmarine Gallery</div>
                   <div class="brand_meta">
@@ -115,7 +119,7 @@
 
             <div class="viewer_side">
               <div class="viewer_section">
-                <div class="viewer_label">注释（可编辑，自动保存到本地）</div>
+                <div class="viewer_label">注释</div>
                 <textarea id="viewer_caption" class="viewer_textarea" placeholder="写点什么…"></textarea>
               </div>
 
@@ -158,4 +162,10 @@
       });
     </script>
   </body>
+  <button id="backToTop" class="back-to-top">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
 </html>
