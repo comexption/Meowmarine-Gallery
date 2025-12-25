@@ -116,3 +116,17 @@ export function renderFooterStats(el, state, filteredCount) {
   el.textContent = `${filteredCount}/${total} · 标签: ${tagText}${qText}`;
   saveQueryPref(state.query || "");
 }
+
+const backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) { // 滚动超过 300px 时显示
+    backToTop.classList.add("show");
+  } else {
+    backToTop.classList.remove("show");
+  }
+});
+
+backToTop.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
